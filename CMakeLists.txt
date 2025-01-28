@@ -41,7 +41,12 @@ set(IMGUI_SOURCES
 )
 
 # Create library
-add_library(rlImGui SHARED ${SOURCES} ${HEADERS} ${IMGUI_SOURCES})
+option(BUILD_SHARED_LIBS "Build shared libraries" ON)
+if(BUILD_SHARED_LIBS)
+  add_library(rlImGui SHARED ${SOURCES} ${HEADERS} ${IMGUI_SOURCES})
+else()
+  add_library(rlImGui STATIC ${SOURCES} ${HEADERS} ${IMGUI_SOURCES})
+endif()
 
 # Link libraries
 target_link_libraries(rlImGui raylib)
