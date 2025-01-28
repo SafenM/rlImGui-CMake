@@ -22,11 +22,6 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(imgui)
 
-# Include directories
-include_directories(${raylib_SOURCE_DIR}/src)
-include_directories(${imgui_SOURCE_DIR})
-include_directories(${CMAKE_CURRENT_SOURCE_DIR})
-
 # Define sources and headers
 file(GLOB_RECURSE SOURCES "rlImGui.cpp")
 file(GLOB_RECURSE HEADERS "rlImGui.h" "extras/*.h")
@@ -54,7 +49,9 @@ target_link_libraries(rlImGui raylib)
 # Define preprocessor macros
 target_compile_definitions(rlImGui PRIVATE IMGUI_DISABLE_OBSOLETE_FUNCTIONS IMGUI_DISABLE_OBSOLETE_KEYIO)
 
-# Set properties for shared library
-if(BUILD_SHARED_LIBS)
-  set_target_properties(rlImGui PROPERTIES POSITION_INDEPENDENT_CODE ON)
-endif()
+# Export include directories
+target_include_directories(rlImGui PUBLIC
+    ${raylib_SOURCE_DIR}/src
+    ${imgui_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}
+)
