@@ -6,7 +6,7 @@ rlImgui provides a backend for [Dear ImGui](https://github.com/ocornut/imgui) us
 
 # Forked to use CMake
 
-This forked [from here](https://github.com/raylib-extras/rlImGui) for my convenience, it lacks examples and I replaced Premake with CMake.
+It's forked [from here](https://github.com/raylib-extras/rlImGui) for my convenience, it lacks examples and I replaced Premake with CMake.
 
 # Building
 
